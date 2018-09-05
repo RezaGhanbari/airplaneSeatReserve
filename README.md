@@ -1,6 +1,11 @@
 ### Simplest online airplane seat system
+
+- Written in golang
+- Dockerized 
+- Pstman collection added
+
 ---
-##### environment variables :
+###### environment variables :
 - PORT
 ---
 #### Description
