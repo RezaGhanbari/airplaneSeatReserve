@@ -4,11 +4,13 @@ import (
 	"encoding/json"
 	"fmt"
 	"github.com/gin-gonic/gin"
+	"log"
 	"net/http"
 	"strconv"
 )
 const (
 	OCCUPIED_ERROR = "error, there is only %v occupied seats"
+	SEAT_WRONG_NUMBER = "an error occurred, wrong number of seats"
 )
 
 func setSeat(c *gin.Context) {
@@ -55,15 +57,23 @@ func getSeat(c *gin.Context) {
 					"result": fmt.Sprintf("an error occurred, %v", err),
 				})
 			}
-			result := string(resultNumber) + characters[x.Seat-1]
-			if result != "0" {
-				c.JSON(200, gin.H{
-					"result": result,
+			ch := characters[x.Seat-1]
+			if ch == "" {
+				c.JSON(http.StatusBadRequest, gin.H{
+					"result": SEAT_WRONG_NUMBER,
 				})
 			} else {
-				c.JSON(http.StatusNotFound, gin.H{
-					"result": fmt.Sprintf(OCCUPIED_ERROR, len(oc)),
-				})
+				result := string(resultNumber) + ch
+				log.Println(result)
+				if result != "0" {
+					c.JSON(http.StatusOK, gin.H{
+						"result": result,
+					})
+				} else {
+					c.JSON(http.StatusNotFound, gin.H{
+						"result": fmt.Sprintf(OCCUPIED_ERROR, len(oc)),
+					})
+				}
 			}
 		}
 	}
