@@ -1,0 +1,65 @@
+{
+	"info": {
+		"_postman_id": "7c38d0b7-989e-4275-98bf-aa66497ee871",
+		"name": "Airplane Seat",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get Seat",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:8000/v1/getSeat?seatNumber=1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"v1",
+						"getSeat"
+					],
+					"query": [
+						{
+							"key": "seatNumber",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Set Seat",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"rows\": 10,\n\t\"seats_per_row\": 6,\n\t\"seats\": [\n\t\t{\n\t\t\t\"input\": 3,\n\t\t\t\"seat\": 2,\n\t\t\t\"occupied\": true\n\t\t}\n\t]\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8000/v1/setSeat",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"v1",
+						"setSeat"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
