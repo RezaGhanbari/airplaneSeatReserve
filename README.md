@@ -2,7 +2,7 @@
 
 - Written in golang
 - Dockerized 
-- Pstman collection added
+- Postman collection added
 
 ---
 ###### environment variables :
