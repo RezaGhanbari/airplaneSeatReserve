@@ -4,10 +4,10 @@
 - Dockerized 
 - Postman collection added
 
----
+
 ###### environment variables :
 - PORT
----
+
 #### Description
 1. The program should allow users to define the dimension of the
 matrix that will represent seating arrangement.
